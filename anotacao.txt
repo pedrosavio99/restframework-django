@@ -1,0 +1,120 @@
+=========UPAR NO GIT NO LINUX
+
+abra o terminal na pasta do seu projeto
+
+    git init
+    git add .
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin https://github.com/pedrosavio99/restframework-django.git
+    git push -u origin main
+
+
+######### INSTALACAO ======================================
+
+INSTLAR O PIP EO VENV
+
+    apt install python3.8-venv
+    sudo pip install virtualenv
+    python3 -m venv venv
+
+entrar na venv
+
+    source venv/bin/activate
+
+venv instalada e ativada!
+e ja podemos usar o pip
+
+intalar django
+
+    pip install django
+
+instalar o pytcharm
+
+adeeeus visual =/
+
+entrar na pasta bin do pytcharm
+
+    ./pytcharm.sh
+
+criar um projeto:
+
+    django-admin startproject pontos_turisticos .
+
+========================= criar as macros no pytcharm
+
+    em edit configuration (rundeb ug) crie um arquivopythone dentro dee faça 
+    os 3 comandos com nomes iguais ao comandose selecione o menagepy
+
+    -migrate
+    -mekemigrations
+    -runserver
+
+========================== criar o super user
+
+    python manage.py createsuperuser
+
+    pedrosavio99
+    118111
+
+======================== instalando o restfremework
+
+    pip install djangorestframework
+
+    django-admin.py startproject name
+
+    django-admin.py startapp name
+
+    sempre lembre de registrar o restframework no intaled apps
+
+
+============= Dicas 
+
+    primeiro crie todos os app de sua aplicação faça ate mapas mentais e depois tente realizar as logicas das view e etcs
+    resumindo faça os app e seus models e depois tente no admin e so dai faça a logica
+
+
+============ Fazer a apificacao ou melhor criar as view/funcoes
+
+5: primeiros passos da 
+
+============ apos criar os modelos iremos criar as rotas em urllll da pasta raiz  
+
+ 
+=========== criar o serializer e depois criar o viewset
+
+============= 6: baixe e intale o postman pois é por ele que testamos nossas apis
+
+    MANUAL POSTMAN:
+
+PONHA NO ESAÇO PRA URL A ULR LOCAL DE SUA APICAÇãO E ESCLHA O METODO QUE QUERES PASSAR 
+EXEMPLO LOcalhost... e metodo get e lista alguma coisa 
+
+PUT: vc vai em body, seleciona form-data e digita os campos que quer alterar e enviar sua solicitacao put
+na url vc precisa selecionar o id do que vc quer mudar
+
+
+POST: vc faz igual ao put passando todos os parametros necessários e sem o id na url né
+
+DELETE: ASSIM COMO no put vc seleciona um id na url e deleta e se tentar deletar duas vezes ja vai vir o 404zao 
+
+
+================= recursos avancados
+
+    CRIAR FILTROS 
+            perceba que isso é uma logia e como esperado será implmentado em viewset
+
+            esse exemplo sera implementado na api de core
+
+            def get_queryset(self):
+                return PontoTuristico.objects.filter(aprovado=True)
+
+            apos criar seu filtro crie também um basename na url da raiz
+
+
+
+
+
+    
+
+
