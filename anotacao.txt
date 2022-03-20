@@ -9,6 +9,11 @@ abra o terminal na pasta do seu projeto
     git remote add origin https://github.com/pedrosavio99/restframework-django.git
     git push -u origin main
 
+    mas vai dar errado pq vc precisa do token de autenticaao kk
+    veja esse video bobao
+
+    ( https://www.youtube.com/watch?v=PMP3RmhkzkA )
+
 
 ######### INSTALACAO ======================================
 
@@ -110,6 +115,46 @@ DELETE: ASSIM COMO no put vc seleciona um id na url e deleta e se tentar deletar
                 return PontoTuristico.objects.filter(aprovado=True)
 
             apos criar seu filtro crie também um basename na url da raiz
+
+
+    SOBRESCREVER OS METODOS GET POST 
+
+        novamente exemplo implemntado na api core view set ok
+
+        GET
+            def list(self,request,*args,**kwargs):
+                return Response({'modificando o GET': 123}) #isso vaifazer o get rodar essas inhas ao inves do padrão do django
+        POST
+            def create(self,request,*args,**kwargs):
+                return Response({'Modificando o POST': request.data['nome']})
+        DELETE
+            def destroy(self,request,*args,**kwargs):
+            #aqui precisa informar na url o parametros
+                return Response({'Modificando o POST': request.data['nome']})
+        PUT
+            def update(self,request,*args,**kwargs):
+            #aqui precisa informar na url o parametros
+                return Response({'Modificando o POST': request.data['nome']})
+        
+        PATCHE
+
+            def partial_update(self,request,*args,**kwargs):
+            #aqui precisa informar na url o parametros
+                return Response({'Modificando o POST': request.data['nome']})
+
+        ACTION PERSONLAIZADA 
+
+            @action(method=['get'],detail=True)
+            def denunciar(self,request,pk=None):
+
+            #DEPENDENDO DA USA ACTION VC PODE PRECISAR INFORMAR NA UL O ID
+
+                return Response({'DENUNCIA PERSONALIZADA': 'isso é um get entao n tem body'})
+
+
+========================= imagens
+
+        
 
 
 
