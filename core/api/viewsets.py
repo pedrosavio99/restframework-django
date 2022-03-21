@@ -14,20 +14,43 @@ class PontoTuristicoViewSet(ModelViewSet): #primeiro é preciso criar o serializ
     serializer_class = PontoTuristicoSerializer
 
     def get_queryset(self):
-        return PontoTuristico.objects.filter(aprovado=True) #aqui eu retornei o filtro e 
+        #CRIACAO DOS FILTROS POR QUERYSTRINGS ?ID=5....
+        id = self.request.query_params.get('id',None)   #so lembrando que esse none ´e pra caso o usuario n passe nada n quebre o codigo
+        nome = self.request.query_params.get('nome',None)
+        descricao = self.request.query_params.get('descricao',None)
+        queryset = PontoTuristico.objects.all()
+
+        #AGR VAMOS CRIAR AS CONDICIONAIS PARA CADA QUERYSTRING
+
+        if id:
+            queryset = PontoTuristico.objects.filter(pk=id)
+        if nome:
+            queryset = queryset.filter(nome__iexact=nome)  #esse __iexact serve pra aceitar maiusculo ou minusculo tanto faz
+        if descricao:
+            queryset = queryset.filter(descricao__iexact=descricao)
+        return queryset  #so aqui ele retorna a lista ja com tudo filtrado
+
+        #return PontoTuristico.objects.filter(aprovado=True) #aqui eu retornei o filtro e 
                 #dara um erro pois o django n esta mais encontrando mais o nosso banco pra entrar nesse filtro
                 #por isso que em urls da rais preisamos  add a clase base_name na rota de ponto turistico
                 #basename='PontoTuristico'
+
+
+
     #MODIFICANDO A RESPOSTA DO GET
     def list(self, request, *args, **kwargs):
-        return Response({'modificando o GET': 123})
+        #return Response({'modificando o GET': 123})
         # isso vaifazer o get rodar essas inhas ao inves do padrão do django
         #basta comentar o list que o metodo vai retornar normalmente os dados do banco padro do django
         #isso é indicado caso vc queimodificar algum parametro enviado
+        #aqui vou usar o padrao do django
+        return super(PontoTuristicoViewSet, self).list(request, *args, **kwargs)
 
     #MODIFICANDO A RESPOTA DO POST
     def create(self, request, *args, **kwargs):
-        return Response({'Modificando o POST': request.data['nome']})
+        # return Response({'Modificando o POST': request.data['nome']})
+        #aqui vou usar o padrao do django
+        return super(PontoTuristicoViewSet, self).create(request, *args, **kwargs)
 
 
     @action(methods=['get'], detail=True) #se quiser os motivos da denuncia faça um post 

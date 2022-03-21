@@ -173,7 +173,42 @@ criar um projeto:
 
 ##  imagens
 
-EM BREVE...
+imagem do ponto PontoTuristico e da atracao
+
+    alteracao do model em PontoTuristico
+
+    foto = models.ImageField(upload_to='pontos_turisticos',null=True,blank=True) #so pra lembrar que esse model ta em core viu n confuda
+
+    em settings na raiz vamos definir o nome da pasta pra salvar as fotos
+
+    MEDIA_ROOT = 'imagens'
+
+    MEDIA_URL = '/media/'
+
+    depois vamos instalar a biblioteca de imgens do python Pillow
+
+    pip install Pillow
+
+    depois adicione no serializer o campo 'foto'
+
+    migrate tudo
+
+
+    #o bagulho n funciona em ambiente de producao so quando a gente upar na aws 
+
+
+
+====================== habilitando filtros em nossa api(como filtrar o query set- dados que sao retornados)
+
+    filtrando por query string
+    querystring é quando vc passa informaçõe na url
+    exemplo:   localhost:/8000/pontosturisticos/?id=5&nome=acudevelho   #é tudo isso depois da interrogacao
+    e passando essas querystrings v consegue realizar uma consulta
+
+    veja um exemplo desses filtros na viewset de core em get_queryset()
+
+    apos implmentar o filtro teste usando um id valido e um nome
+    ex: http://127.0.0.1:8000/pontoturistico/?id=4&nome=Parque%20do%20povo%202 #esse nome bugad é pq os espaços são convertidos mas pode passar o nome com espaço
 
 
 
